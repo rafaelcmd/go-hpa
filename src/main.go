@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math"
+	"net/http"
 )
 
 func raiz(num float64) string {
@@ -14,6 +16,11 @@ func raiz(num float64) string {
 	return "Code.education Rocks!"
 }
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, raiz(0.001))
+}
+
 func main() {
-	fmt.Printf(raiz(0.001))
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
