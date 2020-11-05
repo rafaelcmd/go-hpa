@@ -17,3 +17,9 @@ spec:
           image: rafaelcmd/go-hpa:latest
           ports:
             - containerPort: 80
+
+          resources:
+            requests:
+              cpu: "50m"
+            limits:
+              cpu: "100m"
